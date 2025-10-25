@@ -14,7 +14,7 @@ class Articleoption extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['article_id', 'name'];
+    protected $fillable = ['article_id', 'name', 'price'];
 
     public function article(): BelongsTo
     {
