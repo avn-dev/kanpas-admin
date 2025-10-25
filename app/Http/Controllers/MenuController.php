@@ -23,9 +23,7 @@ class MenuController extends Controller
                 ->with([
                     'allergens:id,name',
                     'optionGroup:id,name',
-                    'options' => function ($q) {
-                        $q->select('options.id', 'options.name'); // pivot price via ->pivot
-                    },
+                    'options:name,price',
                     'category:id,name',
                 ])
                 ->get();
@@ -36,8 +34,8 @@ class MenuController extends Controller
                         $q->select('id', 'category_id', 'name', 'description', 'image_path', 'price', 'option_group_id')
                           ->with([
                               'allergens:id,name',
-                              'optionGroup:id,name',
-                              'options' => fn($qq) => $qq->select('options.id', 'options.name'),
+                              'options:name,price'
+                              //'options' => fn($qq) => $qq->select('options.id', 'options.name'),
                           ]);
                     }
                 ])
