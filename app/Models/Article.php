@@ -36,12 +36,10 @@ class Article extends Model
         return $this->belongsToMany(Allergen::class);
     }
 
-    public function options(): BelongsToMany
+    
+    public function options(): HasMany
     {
-        return $this->belongsToMany(Option::class, 'article_option')
-            ->using(ArticleOptionPivot::class)
-            ->withPivot(['price'])
-            ->withTimestamps();
+        return $this->hasMany(ArticleOption::class);
     }
 
     public function effectivePrice(): ?string

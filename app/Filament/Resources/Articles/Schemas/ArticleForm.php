@@ -28,6 +28,23 @@ class ArticleForm
 
             TextInput::make('name')->required(),
 
+                Repeater::make('options')
+                    ->relationship('options')
+                    ->defaultItems(0)
+                    ->schema([
+                        TextInput::make('name')
+                            ->label('Name')
+                            ->required(),
+                        TextInput::make('price')
+                            ->label('Preis')
+                            ->numeric()
+                            ->step('0.01')
+                            ->prefix('€')
+                            ->nullable(),
+                    ])
+                    ->orderColumn('position')
+                    ->columnSpanFull(),
+
             // Select::make('option_group_id')
             //     ->relationship('optionGroup', 'name')
             //     ->live()
@@ -46,10 +63,7 @@ class ArticleForm
                 ->numeric()
                 ->step('0.01')
                 ->prefix('€')
-                ->nullable()
-                ->hidden(fn (Get $get) => filled($get('option_group_id')))
-                // verhindert, dass der Wert gespeichert wird, wenn eine Gruppe gesetzt ist:
-                ->dehydrated(fn (Get $get) => blank($get('option_group_id'))),
+                ->nullable(),
 
             Textarea::make('description')->columnSpanFull(),
 
