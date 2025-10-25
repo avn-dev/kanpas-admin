@@ -39,7 +39,7 @@ class Article extends Model
     
     public function options(): HasMany
     {
-        return $this->hasMany(ArticleOption::class);
+        return $this->hasMany(Articleoption::class);
     }
 
     public function effectivePrice(): ?string
