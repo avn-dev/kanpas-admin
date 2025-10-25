@@ -26,8 +26,15 @@ class ArticleForm
                 ->preload()
                 ->relationship('allergens', 'name'),
 
-            TextInput::make('name')->required(),
+            // Artikelpreis NUR wenn KEINE OptionGroup gewählt ist
+            TextInput::make('price')
+                ->label('Preis')
+                ->numeric()
+                ->step('0.01')
+                ->prefix('€')
+                ->nullable(),
 
+            TextInput::make('name')->required(),
                 Repeater::make('options')
                     ->relationship('options')
                     ->defaultItems(0)
@@ -44,26 +51,6 @@ class ArticleForm
                     ])
                     ->orderColumn('position')
                     ->columnSpanFull(),
-
-            // Select::make('option_group_id')
-            //     ->relationship('optionGroup', 'name')
-            //     ->live()
-            //     ->afterStateUpdated(function (Set $set, $state) {
-            //         if ($state) {
-            //             // Bei “Optionen-Preis” darf Artikelpreis nicht mitgespeichert werden.
-            //             $set('price', null);
-            //             // Option-Preiszeilen resetten bei Wechsel der Gruppe:
-            //             $set('articleOptions', []);
-            //         }
-            //     }),
-
-            // Artikelpreis NUR wenn KEINE OptionGroup gewählt ist
-            TextInput::make('price')
-                ->label('Preis')
-                ->numeric()
-                ->step('0.01')
-                ->prefix('€')
-                ->nullable(),
 
             Textarea::make('description')->columnSpanFull(),
 
