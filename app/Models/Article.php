@@ -48,7 +48,7 @@ class Article extends Model
             return $this->price;
         }
 
-        $optionPrice = $this->options()->orderBy('article_option.price')->value('article_option.price');
+        $optionPrice = $this->options()->orderBy('articleoptions.price')->value('articleoptions.price');
         return $optionPrice ? number_format($optionPrice, 2, '.', '') : null;
     }
 
