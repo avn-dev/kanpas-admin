@@ -25,7 +25,7 @@ class ArticleResource extends JsonResource
             'option_group'    => new OptionGroupResource($this->whenLoaded('optionGroup')),
             'allergens'       => AllergenResource::collection($this->whenLoaded('allergens')),
             // Optionen inkl. Pivot-Preis:
-            'options'         => OptionResource::collection($this->whenLoaded('options')),
+            'options'         => ArticleoptionResource::collection($this->whenLoaded('options')),
         ];
     }
 }
