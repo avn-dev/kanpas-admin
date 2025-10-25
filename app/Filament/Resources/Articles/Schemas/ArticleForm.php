@@ -24,8 +24,7 @@ class ArticleForm
             Select::make('allergens')
                 ->multiple()
                 ->preload()
-                ->relationship('allergens', 'name')
-                ->required(),
+                ->relationship('allergens', 'name'),
 
             TextInput::make('name')->required(),
 
