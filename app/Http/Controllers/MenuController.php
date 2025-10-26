@@ -35,9 +35,11 @@ class MenuController extends Controller
                           ->with([
                               'allergens',
                               'options'
-                          ]);
+                          ])
+                          ->orderBy('position');
                     }
                 ])
+                ->orderBy('position')
                 ->get(['id', 'name']);
 
             $allergens = Allergen::query()->get(['id', 'name']);
