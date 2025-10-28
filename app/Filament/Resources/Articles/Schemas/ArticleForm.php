@@ -33,6 +33,11 @@ class ArticleForm
                 ->multiple()
                 ->preload(),
 
+            Select::make('additives')
+                ->relationship('additives', 'name')
+                ->multiple()
+                ->preload(),
+
             // Artikelpreis NUR wenn KEINE OptionGroup gewählt ist
             TextInput::make('price')
                 ->label('Preis')
