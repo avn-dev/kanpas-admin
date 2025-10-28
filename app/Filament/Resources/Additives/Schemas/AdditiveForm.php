@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\Additives\Schemas;
 
-namespace App\Filament\Resources\Allergens\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
