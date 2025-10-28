@@ -36,6 +36,14 @@ class Article extends Model
         return $this->belongsToMany(Allergen::class);
     }
 
+    /**
+     * Get the additives belonging to this article.
+     */
+    public function additives(): BelongsToMany
+    {
+        return $this->belongsToMany(Additive::class);
+    }
+
     
     public function options(): HasMany
     {
