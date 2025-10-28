@@ -33,8 +33,12 @@ class MenuController extends Controller
                     'articles' => function ($q) {
                         $q->select('id', 'category_id', 'name', 'description', 'image_path', 'price', 'option_group_id')
                           ->with([
-                              'allergens',
-                              'options'
+                              'allergens' => function ($q) {
+                                  $q->orderBy('position');
+                              },
+                              'options' => function ($q) {
+                                  $q->orderBy('position');
+                              },
                           ])
                           ->orderBy('position');
                     }
