@@ -18,8 +18,11 @@ class ArticleoptionForm
                 TextInput::make('name')
                     ->required(),
                 TextInput::make('price')
+                    ->label('Preis')
                     ->numeric()
-                    ->prefix('$'),
+                    ->step('0.01')
+                    ->prefix('€')
+                    ->nullable(),
                 TextInput::make('position')
                     ->numeric(),
             ]);
