@@ -29,10 +29,9 @@ class ArticleForm
                 ->columnSpanFull(),
 
             Select::make('allergens')
+                ->relationship('allergens', 'name')
                 ->multiple()
-                ->preload()
-                ->searchable()
-                ->relationship('allergens', 'name'),
+                ->preload(),
 
             // Artikelpreis NUR wenn KEINE OptionGroup gewählt ist
             TextInput::make('price')
