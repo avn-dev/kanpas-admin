@@ -55,7 +55,6 @@ class ArticleForm
                         ->prefix('€')
                         ->nullable(),
                 ])
-                ->orderColumn('position')
                 ->columnSpanFull(),
 
             // FileUpload::make('image_path')
