@@ -20,6 +20,7 @@ class ArticleoptionsTable
                     ->searchable(),
                 TextColumn::make('price')
                     ->money()
+                    ->prefix('€')
                     ->sortable(),
                 TextColumn::make('position')
                     ->numeric()
