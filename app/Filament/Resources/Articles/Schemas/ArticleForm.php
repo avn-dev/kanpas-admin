@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Articles\Schemas;
 use App\Models\Option;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -21,9 +22,16 @@ class ArticleForm
                 ->relationship('category', 'name')
                 ->required(),
 
+            TextInput::make('name')
+                ->required(),
+
+            RichEditor::make('description')
+                ->columnSpanFull(),
+
             Select::make('allergens')
                 ->multiple()
                 ->preload()
+                ->searchable()
                 ->relationship('allergens', 'name'),
 
             // Artikelpreis NUR wenn KEINE OptionGroup gewählt ist
@@ -34,32 +42,29 @@ class ArticleForm
                 ->prefix('€')
                 ->nullable(),
 
-            TextInput::make('name')->required(),
-                Repeater::make('options')
-                    ->relationship('options')
-                    ->defaultItems(0)
-                    ->schema([
-                        TextInput::make('name')
-                            ->label('Name')
-                            ->required(),
-                        TextInput::make('price')
-                            ->label('Preis')
-                            ->numeric()
-                            ->step('0.01')
-                            ->prefix('€')
-                            ->nullable(),
-                    ])
-                    ->orderColumn('position')
-                    ->columnSpanFull(),
+            Repeater::make('options')
+                ->relationship('options')
+                ->defaultItems(0)
+                ->schema([
+                    TextInput::make('name')
+                        ->label('Name')
+                        ->required(),
+                    TextInput::make('price')
+                        ->label('Preis')
+                        ->numeric()
+                        ->step('0.01')
+                        ->prefix('€')
+                        ->nullable(),
+                ])
+                ->orderColumn('position')
+                ->columnSpanFull(),
 
-            Textarea::make('description')->columnSpanFull(),
-
-            FileUpload::make('image_path')
-                ->image()
-                ->directory('articles')
-                ->disk('public')
-                ->visibility('public')
-                ->imageEditor(),
+            // FileUpload::make('image_path')
+            //     ->image()
+            //     ->directory('articles')
+            //     ->disk('public')
+            //     ->visibility('public')
+            //     ->imageEditor(),
 
             // Preise pro Option (kein Aufpreis, sondern der volle Preis der Variante)
             // Repeater::make('articleOptions')
