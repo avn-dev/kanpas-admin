@@ -14,6 +14,10 @@ class AllergenResource extends JsonResource
      */
     public function toArray($request): array
     {
-        return parent::toArray($request);
+        return [
+            'name'            => $this->name,
+            'emoji'           => $this->emoji,
+            'position'        => $this->position
+        ];
     }
 }
