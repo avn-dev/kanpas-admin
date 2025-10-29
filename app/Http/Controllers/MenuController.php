@@ -36,6 +36,9 @@ class MenuController extends Controller
                               'allergens' => function ($q) {
                                   $q->orderBy('position');
                               },
+                              'additives' => function ($q) {
+                                  $q->orderBy('position');
+                              },
                               'options' => function ($q) {
                                   $q->orderBy('position');
                               },
