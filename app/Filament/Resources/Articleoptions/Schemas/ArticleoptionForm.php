@@ -15,6 +15,8 @@ class ArticleoptionForm
                 Select::make('article_id')
                     ->relationship('article', 'name')
                     ->required(),
+                TextInput::make('number')
+                    ->numeric(),
                 TextInput::make('name')
                     ->required(),
                 TextInput::make('price')

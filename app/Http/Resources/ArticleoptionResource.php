@@ -19,7 +19,8 @@ class ArticleoptionResource extends JsonResource
             'article_id'      => $this->article_id,
             'name'            => $this->name,
             'price'           => $this->price,
-            'position'        => $this->position
+            'position'        => $this->position,
+            'number'          => $this->number
         ];
     }
 }

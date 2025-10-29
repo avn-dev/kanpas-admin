@@ -50,8 +50,9 @@ class ArticleForm
                 ->relationship('options')
                 ->defaultItems(0)
                 ->schema([
+                    TextInput::make('number')
+                        ->numeric(),
                     TextInput::make('name')
-                        ->label('Name')
                         ->required(),
                     TextInput::make('price')
                         ->label('Preis')
