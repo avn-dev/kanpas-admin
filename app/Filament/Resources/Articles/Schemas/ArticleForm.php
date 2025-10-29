@@ -23,10 +23,8 @@ class ArticleForm
             Select::make('category_id')
                 ->relationship('category', 'name')
                 ->required(),
-
             TextInput::make('name')
                 ->required(),
-
             RichEditor::make('description')
                 ->columnSpanFull(),
 

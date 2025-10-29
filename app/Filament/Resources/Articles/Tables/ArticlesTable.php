@@ -15,6 +15,7 @@ class ArticlesTable
     {
         return $table
             ->columns([
+                TextColumn::make('number'),
                 TextColumn::make('category.name')
                     ->searchable(),
                 TextColumn::make('name')
