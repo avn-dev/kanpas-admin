@@ -18,16 +18,6 @@ class MenuController extends Controller
     {
         // Cache assembled menu for 60s; tweak as you like
         return Cache::remember('menu:v1', now()->addSeconds(60), function () {
-            // Eager-load everything we need, including pivot prices
-            // $articles = Article::query()
-            //     ->with([
-            //         'allergens:id,name',
-            //         'optionGroup:id,name',
-            //         'options:id,name,price',
-            //         'category:id,name',
-            //     ])
-            //     ->get();
-
             $categories = Category::query()
                 ->with([
                     'articles' => function ($q) {
@@ -48,8 +38,6 @@ class MenuController extends Controller
                 ])
                 ->orderBy('position')
                 ->get(['id', 'name']);
-
-            $allergens = Allergen::query()->get(['id', 'name']);
 
             return response()->json([
                 //'articles'   => ArticleResource::collection($articles),
