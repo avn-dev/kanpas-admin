@@ -14,6 +14,12 @@ class ArticleoptionResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id'              => $this->id,
+            'article_id'      => $this->article_id,
+            'name'            => $this->name,
+            'price'           => $this->price,
+            'position'        => $this->position
+        ];
     }
 }
