@@ -17,7 +17,7 @@ class Article extends Model
         'image_path',
         'price',
         'option_group_id',
-        'numbers'
+        'number'
     ];
 
     
