@@ -18,6 +18,8 @@ class ArticleForm
     public static function configure(Schema $schema): Schema
     {
         return $schema->components([
+            TextInput::make('number')
+                ->numeric(),
             Select::make('category_id')
                 ->relationship('category', 'name')
                 ->required(),
