@@ -21,7 +21,7 @@ class MenuController extends Controller
             $categories = Category::query()
                 ->with([
                     'articles' => function ($q) {
-                        $q->select('id', 'category_id', 'name', 'description', 'image_path', 'price', 'option_group_id')
+                        $q->select('id', 'category_id', 'name', 'description', 'image_path', 'price', 'option_group_id', 'number')
                           ->with([
                               'allergens' => function ($q) {
                                   $q->orderBy('position');
